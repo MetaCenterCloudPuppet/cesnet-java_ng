@@ -1,0 +1,55 @@
+{
+  "name": "cesnet-java_ng",
+  "version": "1.0.0",
+  "author": "cesnet",
+  "summary": "More parametrized Java installation",
+  "license": "MIT",
+  "source": "https://github.com/MetaCenterCloudPuppet/cesnet-java_ng",
+  "project_page": "https://github.com/MetaCenterCloudPuppet/cesnet-java_ng",
+  "issues_url": "https://github.com/MetaCenterCloudPuppet/cesnet-java_ng/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs/apt",
+      "version_requirement": "<3.0.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 1.0.0 <5.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": ">= 3.2.0"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.2.0"
+    }
+  ]
+}

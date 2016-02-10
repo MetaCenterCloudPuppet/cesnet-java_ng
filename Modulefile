@@ -1,0 +1,11 @@
+name 'cesnet-java_ng'
+version '1.0.0'
+source 'https://github.com/MetaCenterCloudPuppet/cesnet-java_ng'
+author 'Frantisek Dvorak <valtri@civ.zcu.cz>'
+license 'MIT'
+summary 'More parametrized Java installation'
+description 'More parametrized Java installation'
+project_page 'https://github.com/MetaCenterCloudPuppet/cesnet-java_ng'
+
+dependency 'puppetlabs/apt', '<3.0.0'
+dependency 'puppetlabs/stdlib', '>= 1.0.0 <5.0.0'
