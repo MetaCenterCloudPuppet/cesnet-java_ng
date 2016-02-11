@@ -1,5 +1,5 @@
 module Puppet::Parser::Functions
-    newfunction(:java_ng_avail, :type => :rvalue, :doc => "Construct list of java versions.") do |arguments|
+    newfunction(:java_ng_avail, :type => :rvalue, :doc => "Scans available Java versions and return matching version and repository.") do |arguments|
         raise(Puppet::ParseError, "java_ng_avail(): Wrong number of arguments") if arguments.size < 3
 
         if arguments[0].is_a?(Array) then

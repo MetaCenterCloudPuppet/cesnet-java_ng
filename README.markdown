@@ -1,5 +1,7 @@
 ## Java Headless Puppet Module - java\_ng
 
+[![Build Status](https://travis-ci.org/MetaCenterCloudPuppet/cesnet-java_ng.svg?branch=master)](https://travis-ci.org/MetaCenterCloudPuppet/cesnet-java\_ng)
+
 #### Table of Contents
 
 1. [Module Description - What the module does and why it is useful](#module-description)
@@ -32,7 +34,7 @@ By default the headless flavor is installed, default version depends on the plat
 * Files:
  * webupd8 ppa repository if enabled and needed (Debian, Ubuntu) + apt keys
 
-No changes to the alternatives are done (only a switching in the packages triggers).
+No changes to the alternatives are done (only a switching in the package triggers).
 
 ## Usage
 
@@ -74,13 +76,13 @@ No changes to the alternatives are done (only a switching in the packages trigge
 
 #### Parameters
 
-##### ensure
+#####`ensure`
 
 *ensure* parameter for the Java packages. Default: undef.
 
 Set to **held**, if the Java version is held in Debian or Ubuntu.
 
-##### flavor
+#####`flavor`
 
 Java flavor. Default: 'headless'.
 
@@ -90,13 +92,13 @@ Values:
 * **jdk**
 * **jre**
 
-##### version
+#####`version`
 
 Java major version. Default: [8, 7].
 
 It may be array or single value.
 
-##### repo
+#####`repo`
 
 Repository to use. Default: ['native', 'ppa'].
 
@@ -107,19 +109,19 @@ Values:
 * **native**: native OS repository (mostly with OpenJDK Java)
 * **ppa**: webupd8 PPA repository (with the Oracle Java)
 
-##### prefer\_version
+#####`prefer_version`
 
-Sets the heuristics for selecting default Java version and repository. Default: false.
+Sets the heuristic to prefer Java version over the repository. Default: false.
 
-It is used only when more Java versions is specified.
+It is used only when more Java versions and repositories are specified.
 
 When *true*: the first specified version is used, if available in any repository.
 
-When *false*: the repositories ordering is considered first (native OS goes first by default).
+When *false*: the repositories ordering is considered first (by default the native OS goes first).
 
 ### Functions
 
-* `java_ng_avail`: Construct list of Java versions
+* `java_ng_avail`: Scans available Java versions and return matching version and repository
 
 ## Limitations
 
