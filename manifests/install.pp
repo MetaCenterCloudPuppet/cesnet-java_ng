@@ -49,7 +49,7 @@ class java_ng::install {
       exec { 'repo-ppa-accept-license':
         command => "echo oracle-java${::java_ng::java_version}-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections",
         path    => $path,
-        unless  => "dpkg -l oracle-java${::java_ng::java_version}-installer | grep '^\(ii\|hi\)'",
+        unless  => "dpkg -l oracle-java${::java_ng::java_version}-installer | grep '^\\(ii\\|hi\\)'",
       }
 
       $java_packages = ["oracle-java${::java_ng::java_version}-installer", "oracle-java${::java_ng::java_version}-unlimited-jce-policy"]
