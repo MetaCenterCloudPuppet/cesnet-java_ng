@@ -17,10 +17,10 @@ describe 'java_ng' do
 
           case os
           when 'debian-6-x86_64'
-            it { is_expected.to contain_package('oracle-java8-installer')}
+            it { is_expected.to contain_package('openjdk-7-jre-headless')}
           when 'debian-7-x86_64', 'debian-8-x86_64', 'ubuntu-14-x86_64'
             it { is_expected.to contain_package('openjdk-7-jre-headless')}
-          when 'redhat-5-x86_64', 'redhat-6-x86_64', 'redhat-7-x86_64'
+          when /(centos|scientific|redhat)-(5|6|7)-x86_64/
             it { is_expected.to contain_package('java-1.8.0-openjdk-headless')}
           end
         end
@@ -28,7 +28,26 @@ describe 'java_ng' do
         context "java_ng class with Java 8" do
           let(:params) do
             {
-              :version => 8
+              :version => 8,
+            }
+          end
+          it { is_expected.to compile.with_all_deps }
+          case os
+          when /debian-(6|7)-x86_64/
+            # openjdk 8 from trusty ppa:openjdk-r incompatible
+            it { is_expected.to contain_package('oracle-java8-installer')}
+          when 'debian-8-x86_64', 'ubuntu-14-x86_64'
+            it { is_expected.to contain_package('openjdk-8-jre-headless')}
+          when /(centos|scientific|redhat)-(5|6|7)-x86_64/
+            it { is_expected.to contain_package('java-1.8.0-openjdk-headless')}
+          end
+        end
+
+        context "java_ng class with Oracle Java 8" do
+          let(:params) do
+            {
+              :repo    => ['ppa:oracle', 'native'],
+              :version => 8,
             }
           end
           it { is_expected.to compile.with_all_deps }
@@ -37,7 +56,7 @@ describe 'java_ng' do
             it { is_expected.to contain_package('oracle-java8-installer')}
           when 'debian-7-x86_64', 'debian-8-x86_64', 'ubuntu-14-x86_64'
             it { is_expected.to contain_package('oracle-java8-installer')}
-          when 'redhat-5-x86_64', 'redhat-6-x86_64', 'redhat-7-x86_64'
+          when /(centos|scientific|redhat)-(5|6|7)-x86_64/
             it { is_expected.to contain_package('java-1.8.0-openjdk-headless')}
           end
         end

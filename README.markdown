@@ -22,7 +22,7 @@ This puppet module performs more parametrized Java installation. Various options
 
 * major version: **7**, **8**
 * flavor: **headless**, **jdk**, **jre**
-* repositories: **native**, **ppa**
+* repositories: **native**, **ppa:openjdk**, **ppa:oracle**
 
 By default the headless flavor is installed, default version depends on the platform (8 or 7), and native repository is preferred.
 
@@ -32,7 +32,7 @@ By default the headless flavor is installed, default version depends on the plat
 
 * Packages: Java (JRE/JDK, JCE policy)
 * Files:
- * webupd8 ppa repository if enabled and needed (Debian, Ubuntu) + apt keys
+ * ppa repository if enabled and needed (Debian, Ubuntu) + apt keys
 
 No changes to the alternatives are done (only a switching in the package triggers).
 
@@ -56,10 +56,10 @@ No changes to the alternatives are done (only a switching in the package trigger
       version => 8,
     }
 
-**Example: Oracle Java (using only ppa, not the native OS repository)**
+**Example: Oracle Java (by selecting the PPA repository instead of preferred native OS repository)**
 
     class { '::java_ng':
-      repo    => 'ppa',
+      repo    => 'ppa:oracle',
       version => 8,
     }
 
@@ -69,7 +69,7 @@ No changes to the alternatives are done (only a switching in the package trigger
 
 * [**`java_ng`**](#class-java_ng): Install Java
 * `java_ng::install`: Setup repositories and install packages
-* `java_ng::config`
+* `java_ng::params`: Parameters and default values according to platform
 
 <a name="class-java_ng"></a>
 ### `java_ng` class
@@ -100,14 +100,15 @@ It may be array or single value.
 
 #####`repo`
 
-Repository to use. Default: ['native', 'ppa'].
+Repository to use. Default: ['native', 'ppa:openjdk', 'ppa:oracle'].
 
 It may be array or single value.
 
 Values:
 
 * **native**: native OS repository (mostly with OpenJDK Java)
-* **ppa**: webupd8 PPA repository (with the Oracle Java)
+* **ppa:openjdk**: openjdk-r Ubuntu PPA repository (with the OpenJDK Java)
+* **ppa:oracle**: webupd8 Ubuntu PPA repository (with the Oracle Java)
 
 #####`prefer_version`
 
@@ -117,7 +118,7 @@ It is used only when more Java versions and repositories are specified.
 
 When *true*: the first specified version is used, if available in any repository.
 
-When *false*: the repositories ordering is considered first (by default the native OS goes first).
+When *false*: the repositories ordering is considered first (by default the native OS is the first).
 
 ### Functions
 
