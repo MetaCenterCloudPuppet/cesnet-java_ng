@@ -38,7 +38,7 @@ No changes to the alternatives are done (only a switching in the package trigger
 
 ## Usage
 
-**Example: basic usage**
+**Example: basic usage** (using defaults or values from hiera)
 
     include ::java_ng
 
@@ -49,14 +49,14 @@ No changes to the alternatives are done (only a switching in the package trigger
       version => 8,
     }
 
-**Example: lock the package version (Debian, Ubuntu)**
+**Example: lock the package version** (Debian, Ubuntu)
 
     class { '::java_ng':
       ensure  => 'held',
       version => 8,
     }
 
-**Example: Oracle Java (by selecting the PPA repository instead of preferred native OS repository)**
+**Example: Oracle Java 8** (by selecting the PPA repository instead of preferred native OS repository)
 
     class { '::java_ng':
       repo    => 'ppa:oracle',
