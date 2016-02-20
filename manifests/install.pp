@@ -60,7 +60,12 @@ class java_ng::install {
             unless  => "dpkg -l oracle-java${::java_ng::java_version}-installer | grep '^\\(ii\\|hi\\)'",
           }
 
-          $java_packages = ["oracle-java${::java_ng::java_version}-installer", "oracle-java${::java_ng::java_version}-unlimited-jce-policy"]
+          ensure_packages('ca-certificates-java')
+
+          $java_packages = [
+            "oracle-java${::java_ng::java_version}-installer",
+            "oracle-java${::java_ng::java_version}-unlimited-jce-policy",
+          ]
 
           Class['::apt::update'] ->
           Exec['repo-ppa-accept-license'] ->

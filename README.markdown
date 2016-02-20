@@ -30,7 +30,7 @@ By default the headless flavor is installed, default version depends on the plat
 
 ### What java\_ng affects
 
-* Packages: Java (JRE/JDK, JCE policy)
+* Packages: Java (JRE/JDK, JCE policy, CA certificates)
 * Files:
  * ppa repository if enabled and needed (Debian, Ubuntu) + apt keys
 
