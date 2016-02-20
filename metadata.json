@@ -1,12 +1,18 @@
 {
   "name": "cesnet-java_ng",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "author": "cesnet",
   "summary": "More parametrized Java installation",
   "license": "MIT",
   "source": "https://github.com/MetaCenterCloudPuppet/cesnet-java_ng",
   "project_page": "https://github.com/MetaCenterCloudPuppet/cesnet-java_ng",
   "issues_url": "https://github.com/MetaCenterCloudPuppet/cesnet-java_ng/issues",
+  "tags": [
+    "java",
+    "headless",
+    "jre",
+    "jdk"
+  ],
   "dependencies": [
     {
       "name": "puppetlabs/apt",

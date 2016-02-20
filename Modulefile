@@ -1,5 +1,5 @@
 name 'cesnet-java_ng'
-version '1.0.1'
+version '2.0.0'
 source 'https://github.com/MetaCenterCloudPuppet/cesnet-java_ng'
 author 'Frantisek Dvorak <valtri@civ.zcu.cz>'
 license 'MIT'
