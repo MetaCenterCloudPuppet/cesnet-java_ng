@@ -19,8 +19,8 @@ class java_ng(
 
   if !$java_repository {
     fail(
-      'No requested Java versions found, available versions:
-native: [',
+      "No requested Java versions found (${version}), available versions:
+native: [",
       join($::java_ng::versions['native'], ', '),
       ']
 ppa:openjdk: [',
