@@ -8,6 +8,7 @@ class java_ng(
   $prefer_version = false,
   $repo = ['native', 'ppa:openjdk', 'ppa:oracle'],
   $version = [8, 7],
+  $set_default = undef,
 ) inherits ::java_ng::params {
   include ::stdlib
 

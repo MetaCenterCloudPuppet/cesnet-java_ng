@@ -70,6 +70,13 @@ class java_ng::install {
           Class['::apt::update'] ->
           Exec['repo-ppa-accept-license'] ->
           Package[$java_packages]
+
+          if $::java_ng::set_default {
+            ensure_packages("oracle-java${::java_ng::java_version}-set-default")
+
+            Package[$java_packages] ->
+            Package["oracle-java${::java_ng::java_version}-set-default"]
+          }
         }
         default: {
           $java_packages = []

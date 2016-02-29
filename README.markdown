@@ -120,6 +120,12 @@ When *true*: the first specified version is used, if available in any repository
 
 When *false*: the repositories ordering is considered first (by default the native OS is the first).
 
+#####`set_default`
+
+Sets installed Java as default. Default: undef.
+
+Used only with *ppa:oracle*.
+
 ### Functions
 
 * `java_ng_avail`: Scans available Java versions and return matching version and repository
@@ -128,7 +134,7 @@ When *false*: the repositories ordering is considered first (by default the nati
 
 PPA repository is permitted also on Debian, there is always used the Ubuntu 14/trusty version.
 
-Alternatives are not touched.
+Alternatives are not touched, *set\_default* parameter is used only with *ppa:oracle* repository.
 
 ## Development
 
