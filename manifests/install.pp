@@ -72,10 +72,17 @@ class java_ng::install {
           Package[$java_packages]
 
           if $::java_ng::set_default {
-            ensure_packages("oracle-java${::java_ng::java_version}-set-default")
+            $default_package = "oracle-java${::java_ng::java_version}-set-default"
+            if !$::java_ng::ensure {
+              ensure_packages($default_package)
+            } else {
+              package{$default_package:
+                ensure => $::java_ng::ensure,
+              }
+            }
 
             Package[$java_packages] ->
-            Package["oracle-java${::java_ng::java_version}-set-default"]
+            Package[$default_package]
           }
         }
         default: {
