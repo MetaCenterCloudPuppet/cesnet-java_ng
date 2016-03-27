@@ -36,6 +36,7 @@ describe 'java_ng' do
           when /debian-(6|7)-x86_64/
             # openjdk 8 from trusty ppa:openjdk-r incompatible
             it { is_expected.to contain_package('oracle-java8-installer')}
+            it { is_expected.to contain_package('oracle-java8-unlimited-jce-policy')}
           when 'debian-8-x86_64', 'ubuntu-14-x86_64'
             it { is_expected.to contain_package('openjdk-8-jre-headless')}
           when /(centos|scientific|redhat)-(5|6|7)-x86_64/
@@ -54,8 +55,10 @@ describe 'java_ng' do
           case os
           when 'debian-6-x86_64'
             it { is_expected.to contain_package('oracle-java8-installer')}
+            it { is_expected.to contain_package('oracle-java8-unlimited-jce-policy')}
           when 'debian-7-x86_64', 'debian-8-x86_64', 'ubuntu-14-x86_64'
             it { is_expected.to contain_package('oracle-java8-installer')}
+            it { is_expected.to contain_package('oracle-java8-unlimited-jce-policy')}
           when /(centos|scientific|redhat)-(5|6|7)-x86_64/
             it { is_expected.to contain_package('java-1.8.0-openjdk-headless')}
           end
