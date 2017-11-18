@@ -1,6 +1,9 @@
 fixtures:
   repositories:
-    apt: "https://github.com/puppetlabs/puppetlabs-apt.git"
+    apt:
+      repo: "https://github.com/puppetlabs/puppetlabs-apt.git"
+      # for tests with puppet < 4
+      ref: "2.4.0"
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
   symlinks:
     java_ng: "#{source_dir}"
