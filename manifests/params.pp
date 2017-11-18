@@ -17,6 +17,7 @@ class java_ng::params {
         /wheezy|precise|trusty/ => [6, 7],
         /jessie/ => [7],
         /stretch/ => [7, 8],
+        /buster|xenial/ => [8, 9],
         default => [],
       }
 
