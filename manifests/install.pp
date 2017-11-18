@@ -10,7 +10,7 @@ class java_ng::install {
   case $::java_ng::java_repository {
     'native': {
       $java_packages = $::osfamily ? {
-        /Debian/ => ["openjdk-${$::java_ng::java_version}${::java_ng::_flavor}"],
+        /Debian/ => ["openjdk-${::java_ng::java_version}${::java_ng::_flavor}"],
         /RedHat/ => ["java-1.${::java_ng::java_version}.0-openjdk${::java_ng::_flavor}"],
         default  => undef,
       }
