@@ -41,17 +41,17 @@ class java_ng::install {
           source => "puppet:///modules/java_ng/ppa-${::java_ng::ppa_ident}.list",
         }
 
-        ::Apt::Key["${::java_ng::ppa_ident}-ppa"] ->
-        File[$ppa_file] ~>
-        Class['::apt::update']
+        ::Apt::Key["${::java_ng::ppa_ident}-ppa"]
+        -> File[$ppa_file]
+        ~> Class['::apt::update']
       }
 
       case $::java_ng::java_repository {
         'ppa:openjdk': {
           $java_packages = ["openjdk-${::java_ng::java_version}${::java_ng::_flavor}"]
 
-          Class['::apt::update'] ->
-          Package[$java_packages]
+          Class['::apt::update']
+          -> Package[$java_packages]
         }
         'ppa:oracle': {
           exec { 'repo-ppa-accept-license':
@@ -67,9 +67,9 @@ class java_ng::install {
             "oracle-java${::java_ng::java_version}-unlimited-jce-policy",
           ]
 
-          Class['::apt::update'] ->
-          Exec['repo-ppa-accept-license'] ->
-          Package[$java_packages]
+          Class['::apt::update']
+          -> Exec['repo-ppa-accept-license']
+          -> Package[$java_packages]
 
           if $::java_ng::set_default {
             $default_package = "oracle-java${::java_ng::java_version}-set-default"
@@ -81,8 +81,8 @@ class java_ng::install {
               }
             }
 
-            Package[$java_packages] ->
-            Package[$default_package]
+            Package[$java_packages]
+            -> Package[$default_package]
           }
         }
         default: {

@@ -62,6 +62,6 @@ ppa:oracle: [',
     default           => '',
   }
 
-  class { '::java_ng::install': } ->
-  Class['::java_ng']
+  class { '::java_ng::install': }
+  -> Class['::java_ng']
 }
