@@ -1,6 +1,6 @@
 {
   "name": "cesnet-java_ng",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "cesnet",
   "summary": "More parametrized Java installation",
   "license": "MIT",
@@ -38,7 +38,8 @@
         "6",
         "7",
         "8",
-        "9"
+        "9",
+		"10"
       ]
     },
     {
@@ -66,7 +67,7 @@
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "14.04"
+        "14.04", "16.04"
       ]
     }
   ],
