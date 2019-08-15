@@ -4,6 +4,9 @@ fixtures:
       repo: "https://github.com/puppetlabs/puppetlabs-apt.git"
       # for tests with puppet < 4
       ref: "2.4.0"
-    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+    stdlib:
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+      # for future parser tests with puppet < 4
+      ref: "4.25.1"
   symlinks:
     java_ng: "#{source_dir}"
