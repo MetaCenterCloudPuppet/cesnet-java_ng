@@ -56,13 +56,6 @@ No changes to the alternatives are done (only a switching in the package trigger
       version => 8,
     }
 
-**Example: Oracle Java 8** (by selecting the PPA repository instead of preferred native OS repository)
-
-    class { '::java_ng':
-      repo    => 'ppa:oracle',
-      version => 8,
-    }
-
 ## Reference
 
 ### Classes
@@ -108,7 +101,7 @@ Values:
 
 * **native**: native OS repository (mostly with OpenJDK Java)
 * **ppa:openjdk**: openjdk-r Ubuntu PPA repository (with the OpenJDK Java)
-* **ppa:oracle**: webupd8 Ubuntu PPA repository (with the Oracle Java)
+* **ppa:oracle**: obsolete, doesn't work anymore due to Oracle licensing (used to be webupd8 Ubuntu PPA repository with the Oracle Java)
 
 #####`prefer_version`
 
@@ -124,7 +117,7 @@ When *false*: the repositories ordering is considered first (by default the nati
 
 Sets installed Java as default. Default: undef.
 
-Used only with *ppa:oracle*.
+Obsolete parameter. Used only with *ppa:oracle*.
 
 ### Functions
 
@@ -132,13 +125,12 @@ Used only with *ppa:oracle*.
 
 ## Limitations
 
-PPA repository is permitted also on Debian, there is always used the Ubuntu 14/trusty version.
+TODO:
 
-Alternatives are not touched, *set\_default* parameter is used only with *ppa:oracle* repository.
+webupd8 and openjdk-r Ubuntu PPA repositories needs to be updated...
 
 ## Development
 
 * Repository: [https://github.com/MetaCenterCloudPuppet/cesnet-java\_ng](https://github.com/MetaCenterCloudPuppet/cesnet-java_ng)
 * Tests:
  * basic: see *.travis.yml*
-* Email: František Dvořák &lt;valtri@civ.zcu.cz&gt;

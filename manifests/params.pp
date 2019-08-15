@@ -5,11 +5,12 @@
 class java_ng::params {
   case $::osfamily {
     'Debian': {
-      $java_ppa_oracle_versions = [6, 7, 8, 9]
+      $java_ppa_oracle_versions = []
 
       $java_ppa_openjdk_versions = $::lsbdistcodename ? {
         /squeeze|wheezy/ => [6, 7],
-        default => [6, 7, 8],
+        /jessie|stretch|xenial/ => [6, 7, 8],
+        default => [],
       }
 
       $java_native_versions = $::lsbdistcodename ? {
@@ -17,7 +18,8 @@ class java_ng::params {
         /wheezy|precise|trusty/ => [6, 7],
         /jessie/ => [7],
         /stretch/ => [7, 8],
-        /buster|xenial/ => [8, 9],
+        /xenial/ => [8, 9],
+        /buster/ => [11],
         default => [],
       }
 

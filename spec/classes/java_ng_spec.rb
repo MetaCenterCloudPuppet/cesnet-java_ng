@@ -31,39 +31,17 @@ describe 'java_ng' do
               :version => 8,
             }
           end
-          it { is_expected.to compile.with_all_deps }
           case os
           when /debian-(6|7)-x86_64/
             # openjdk 8 from trusty ppa:openjdk-r incompatible
-            it { is_expected.to contain_package('oracle-java8-installer')}
-            it { is_expected.to contain_package('oracle-java8-unlimited-jce-policy')}
           when 'debian-8-x86_64', 'ubuntu-14-x86_64'
+            it { is_expected.to compile.with_all_deps }
             it { is_expected.to contain_package('openjdk-8-jre-headless')}
           when /(centos|scientific|redhat)-(5|6|7)-x86_64/
+            it { is_expected.to compile.with_all_deps }
             it { is_expected.to contain_package('java-1.8.0-openjdk-headless')}
           end
         end
-
-        context "java_ng class with Oracle Java 8" do
-          let(:params) do
-            {
-              :repo    => ['ppa:oracle', 'native'],
-              :version => 8,
-            }
-          end
-          it { is_expected.to compile.with_all_deps }
-          case os
-          when 'debian-6-x86_64'
-            it { is_expected.to contain_package('oracle-java8-installer')}
-            it { is_expected.to contain_package('oracle-java8-unlimited-jce-policy')}
-          when 'debian-7-x86_64', 'debian-8-x86_64', 'ubuntu-14-x86_64'
-            it { is_expected.to contain_package('oracle-java8-installer')}
-            it { is_expected.to contain_package('oracle-java8-unlimited-jce-policy')}
-          when /(centos|scientific|redhat)-(5|6|7)-x86_64/
-            it { is_expected.to contain_package('java-1.8.0-openjdk-headless')}
-          end
-        end
-
       end
     end
   end
